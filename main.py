@@ -3,11 +3,11 @@ import pandas as pd
 import mysql.connector
 from sqlalchemy import create_engine
 
-engine = create_engine('mysql+mysqlconnector://erios:Qazplm123!@integra2db.cdygn8mgmkud.us-east-1.rds.amazonaws.com/users')
+engine = create_engine('mysql+mysqlconnector://admin:adminintegra@integra-db.cixttkwrfvm3.us-east-1.rds.amazonaws.com/users')
 conexion = mysql.connector.connect(
-    host='integra2db.cdygn8mgmkud.us-east-1.rds.amazonaws.com',
-    user='erios',
-    password='Qazplm123!',
+    host='integra-db.cixttkwrfvm3.us-east-1.rds.amazonaws.com',
+    user='admin',
+    password='adminintegra',
     database='users'
 )
 cursor = conexion.cursor()
@@ -37,6 +37,5 @@ sentencia = sentencia.rstrip(', ') + ")"
 cursor.execute(sentencia) 
 
 df.to_sql(name=table_name, con=engine, if_exists="replace", index=False) 
-print(sentencia)
 
 conexion.close()
